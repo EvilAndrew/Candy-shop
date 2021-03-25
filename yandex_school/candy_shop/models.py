@@ -4,7 +4,7 @@ from django.db import models
 class Courier(models.Model):
     courier_id = models.IntegerField(primary_key=True)
     courier_type = models.CharField(max_length=4)
-    # there is no array-like field, so TextField with semicolon limiter is
+    # there is no array-like field, so TextField with semicolon delimiter is
     # used instead (ex: "1;6;22" is considered the same way as[1, 6, 22])
     regions = models.TextField()
     working_hours = models.TextField()
@@ -81,7 +81,7 @@ class Order(models.Model):
     weight = models.FloatField()
     region = models.IntegerField()
 
-    # there is no array-like field, so TextField with semicolon limiter is
+    # there is no array-like field, so TextField with semicolon delimiter is
     # used instead (ex: "1;6;22" is considered the same way as[1, 6, 22])
     delivery_hours = models.TextField()
     courier = models.ForeignKey(
